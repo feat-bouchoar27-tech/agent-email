@@ -1,88 +1,90 @@
-import msal
-import requests
+import imaplib
+import email
+from email.header import decode_header
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-CLIENT_ID     = os.getenv("CLIENT_ID")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-TENANT_ID     = os.getenv("TENANT_ID", "consumers")
+IMAP_SERVER   = os.getenv("IMAP_SERVER")
+IMAP_PORT     = int(os.getenv("IMAP_PORT", 993))
+IMAP_USER     = os.getenv("IMAP_USER")
+IMAP_PASSWORD = os.getenv("IMAP_PASSWORD")
 
-AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
-SCOPES    = [
-    "https://graph.microsoft.com/Mail.Read",
-    "https://graph.microsoft.com/Mail.Send",
-    "https://graph.microsoft.com/User.Read"
-]
+def connecter():
+    mail = imaplib.IMAP4_SSL(IMAP_SERVER, IMAP_PORT)
+    mail.login(IMAP_USER, IMAP_PASSWORD)
+    return mail
 
-def get_access_token():
-    app = msal.PublicClientApplication(CLIENT_ID, authority=AUTHORITY)
-    
-    # Utiliser le cache si disponible
-    accounts = app.get_accounts()
-    if accounts:
-        result = app.acquire_token_silent(SCOPES, account=accounts[0])
-        if result and "access_token" in result:
-            print("✅ Token récupéré depuis le cache")
-            return result["access_token"]
-    
-    # Device Code Flow
-    flow = app.initiate_device_flow(scopes=SCOPES)
-    print(f"\n👉 {flow['message']}\n")
-    result = app.acquire_token_by_device_flow(flow)
-    
-    if "access_token" in result:
-        print("✅ Authentification réussie !")
-        return result["access_token"]
-    else:
-        raise Exception(f"❌ Erreur : {result.get('error_description')}")
+def decoder_header(valeur):
+    if not valeur:
+        return ""
+    parties = decode_header(valeur)
+    resultat = ""
+    for partie, encodage in parties:
+        if isinstance(partie, bytes):
+            resultat += partie.decode(encodage or "utf-8", errors="ignore")
+        else:
+            resultat += partie
+    return resultat
 
-def get_emails_non_lus(token, top=10):
-    headers = {"Authorization": f"Bearer {token}"}
-    url = (
-        "https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messages"
-        "?$filter=isRead eq false"
-        "&$orderby=receivedDateTime desc"
-        f"&$top={top}"
-        "&$select=id,subject,from,receivedDateTime,body,isRead,importance"
-    )
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        emails = response.json().get("value", [])
-        print(f"📬 {len(emails)} email(s) non lu(s) trouvé(s)")
-        return emails
-    else:
-        print(f"❌ Erreur Graph API : {response.status_code}")
+def get_emails_non_lus(top=10):
+    mail = connecter()
+    mail.select("INBOX")
+
+    # Chercher tous les emails
+    _, messages = mail.search(None, "ALL")
+    ids = messages[0].split()
+
+    if not ids:
+        print("📭 Aucun email trouvé")
+        mail.logout()
         return []
 
-def marquer_lu(token, message_id):
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
-    url = f"https://graph.microsoft.com/v1.0/me/messages/{message_id}"
-    requests.patch(url, headers=headers, json={"isRead": True})
+    # Prendre les derniers
+    ids = ids[-top:]
+    emails = []
 
-def envoyer_reponse(token, message_id, corps_reponse):
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
-    url = f"https://graph.microsoft.com/v1.0/me/messages/{message_id}/reply"
-    response = requests.post(url, headers=headers, json={"comment": corps_reponse})
-    if response.status_code == 202:
-        print("✅ Réponse envoyée")
-        return True
-    else:
-        print(f"❌ Erreur envoi : {response.status_code}")
-        return False
+    for uid in reversed(ids):
+        _, msg_data = mail.fetch(uid, "(RFC822)")
+        msg = email.message_from_bytes(msg_data[0][1])
 
-def get_info_utilisateur(token):
-    headers = {"Authorization": f"Bearer {token}"}
-    response = requests.get("https://graph.microsoft.com/v1.0/me", headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    return {}
+        sujet      = decoder_header(msg.get("Subject", ""))
+        expediteur = decoder_header(msg.get("From", ""))
+        date       = msg.get("Date", "")
 
-print("✅ outlook_connector.py prêt — en attente des credentials Azure")
+        # Extraire le corps
+        corps = ""
+        if msg.is_multipart():
+            for part in msg.walk():
+                if part.get_content_type() == "text/plain":
+                    corps = part.get_payload(decode=True).decode("utf-8", errors="ignore")
+                    break
+        else:
+            corps = msg.get_payload(decode=True).decode("utf-8", errors="ignore")
+
+        emails.append({
+            "id"         : uid.decode(),
+            "sujet"      : sujet,
+            "expediteur" : expediteur,
+            "corps"      : corps[:2000],
+            "date"       : date
+        })
+
+    mail.logout()
+    print(f"📬 {len(emails)} email(s) trouvé(s)")
+    return emails
+
+def marquer_lu(uid):
+    mail = connecter()
+    mail.select("INBOX")
+    mail.store(uid, "+FLAGS", "\\Seen")
+    mail.logout()
+
+if __name__ == "__main__":
+    emails = get_emails_non_lus()
+    for e in emails:
+        print(f"\n📧 Sujet : {e['sujet']}")
+        print(f"   De    : {e['expediteur']}")
+        print(f"   Date  : {e['date']}")
+        print(f"   Corps : {e['corps'][:100]}...")
