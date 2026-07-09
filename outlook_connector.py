@@ -53,6 +53,15 @@ def get_emails_non_lus(top=10):
         expediteur = decoder_header(msg.get("From", ""))
         date       = msg.get("Date", "")
 
+        # Identifiant STABLE de l'email : le vrai Message-ID (header RFC 822),
+        # jamais le numero de sequence IMAP qui peut changer/se decaler.
+        message_id_reel = msg.get("Message-ID", "").strip()
+        if not message_id_reel:
+            # Filet de securite si un email n'a pas de Message-ID (rare) :
+            # on combine expediteur+sujet+date pour rester stable dans le temps,
+            # au lieu du numero de sequence IMAP qui n'est pas fiable.
+            message_id_reel = f"fallback:{expediteur}:{sujet}:{date}"
+
         # Extraire le corps
         corps = ""
         if msg.is_multipart():
@@ -64,7 +73,8 @@ def get_emails_non_lus(top=10):
             corps = msg.get_payload(decode=True).decode("utf-8", errors="ignore")
 
         emails.append({
-            "id"         : uid.decode(),
+            "id"         : message_id_reel,
+            "uid_imap"   : uid.decode(),  # gardé si besoin pour marquer_lu()
             "sujet"      : sujet,
             "expediteur" : expediteur,
             "corps"      : corps[:2000],
@@ -85,6 +95,7 @@ if __name__ == "__main__":
     emails = get_emails_non_lus()
     for e in emails:
         print(f"\n📧 Sujet : {e['sujet']}")
+        print(f"   ID (Message-ID) : {e['id']}")
         print(f"   De    : {e['expediteur']}")
         print(f"   Date  : {e['date']}")
         print(f"   Corps : {e['corps'][:100]}...")
