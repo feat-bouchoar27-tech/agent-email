@@ -27,7 +27,6 @@ body.dark {
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
-
 .sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:var(--sidebar);display:flex;flex-direction:column;z-index:100;border-right:1px solid rgba(255,255,255,0.05);}
 .sb-logo{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:0.5rem;}
 .logo-row{display:flex;align-items:center;gap:10px;}
@@ -43,7 +42,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .nav-ico{font-size:17px;width:20px;text-align:center;flex-shrink:0;}
 .nb{margin-left:auto;background:var(--red);color:#fff;border-radius:20px;font-size:10px;font-weight:700;padding:2px 7px;display:none;}
 .sb-bot{padding:0.75rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:3px;}
-
 .main{margin-left:240px;padding:2rem;min-height:100vh;}
 .page{display:none;}
 .page.active{display:block;animation:fi 0.32s cubic-bezier(0.22,1,0.36,1);}
@@ -52,7 +50,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .ptitle{font-size:22px;font-weight:800;letter-spacing:-0.6px;}
 .psub{font-size:13px;color:var(--text2);margin-top:3px;}
 .tba{display:flex;gap:10px;align-items:center;}
-
 .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:var(--rs);font-size:13.5px;font-family:'Inter',sans-serif;cursor:pointer;border:none;transition:var(--tr);font-weight:600;letter-spacing:-0.1px;position:relative;overflow:hidden;isolation:isolate;}
 .btn:hover{transform:translateY(-2px);}
 .btn:active{transform:translateY(0) scale(0.97);}
@@ -70,7 +67,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.55);transform:scale(0);animation:ripple-anim 0.6s ease-out;pointer-events:none;z-index:0;}
 .btn-outline .ripple{background:rgba(79,110,247,0.25);}
 @keyframes ripple-anim{to{transform:scale(2.6);opacity:0;}}
-
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:1.5rem;}
 .metric{background:var(--card);border-radius:var(--r);padding:1.4rem 1.5rem;border:1px solid var(--border);box-shadow:var(--sh);transition:var(--tr);position:relative;overflow:hidden;}
 .metric::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0;}
@@ -84,7 +80,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .m-val{font-size:38px;font-weight:800;letter-spacing:-2px;line-height:1;}
 .mv-blue{color:var(--accent);} .mv-red{color:var(--red);} .mv-amber{color:var(--amber);} .mv-green{color:var(--green);}
 .m-hint{font-size:11.5px;color:var(--text3);margin-top:7px;}
-
 .card{background:var(--card);border-radius:var(--r);padding:1.5rem;border:1px solid var(--border);box-shadow:var(--sh);transition:background 0.3s,border-color 0.3s;}
 .ctitle{font-size:14px;font-weight:600;color:var(--text);margin-bottom:1.25rem;letter-spacing:-0.2px;}
 .charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:1.5rem;}
@@ -93,7 +88,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:4px;transition:width 1s cubic-bezier(0.4,0,0.2,1);}
 .bar-num{font-size:12px;color:var(--text2);width:24px;font-family:'JetBrains Mono',monospace;font-weight:500;}
-
 .vwrap{background:var(--card);border-radius:var(--r);padding:1.5rem;border:1px solid var(--border);box-shadow:var(--sh);margin-bottom:1.5rem;min-height:260px;}
 #volumeChart{width:100%!important;height:200px!important;display:block;}
 .twrap{background:var(--card);border-radius:var(--r);padding:1.5rem;border:1px solid var(--border);box-shadow:var(--sh);margin-bottom:1.5rem;}
@@ -105,7 +99,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .tbl{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:6px;font-weight:500;}
 .ttrack{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
 .tfill{height:100%;border-radius:4px;transition:width 0.6s ease;}
-
 .filters{display:flex;gap:10px;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center;}
 .sw{position:relative;flex:1;min-width:220px;}
 .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text3);pointer-events:none;}
@@ -113,7 +106,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .search-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,110,247,0.12);}
 select{padding:9px 14px;border-radius:var(--rs);border:1px solid var(--border);background:var(--card);font-size:13px;font-family:'Inter',sans-serif;color:var(--text);cursor:pointer;transition:var(--tr);box-shadow:var(--sh);}
 select:focus{outline:none;border-color:var(--accent);}
-
 .outlook-layout{display:grid;grid-template-columns:360px 1fr;background:var(--card);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;min-height:600px;box-shadow:var(--sh);}
 .email-list-panel{border-right:1px solid var(--border);overflow-y:auto;max-height:700px;}
 .elh{padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:0.8px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1;}
@@ -127,7 +119,6 @@ select:focus{outline:none;border-color:var(--accent);}
 .eif{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px;font-weight:500;}
 .eip{font-size:11.5px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .eib{display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;}
-
 .reading-panel{padding:2rem;overflow-y:auto;max-height:700px;}
 .re{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--text3);gap:14px;}
 .rei{font-size:52px;opacity:0.35;}
@@ -144,7 +135,6 @@ select:focus{outline:none;border-color:var(--accent);}
 .rreponse{font-size:13px;color:var(--text);line-height:1.7;background:var(--green-l);border-radius:10px;padding:14px;border-left:3px solid var(--green);white-space:pre-wrap;}
 .rraison{font-size:13px;color:var(--text);background:var(--amber-l);border-radius:10px;padding:10px 14px;border-left:3px solid var(--amber);}
 .ract{display:flex;gap:8px;margin-top:1.5rem;flex-wrap:wrap;}
-
 .urgence-badge{padding:3px 10px;border-radius:20px;font-size:10.5px;font-weight:700;white-space:nowrap;letter-spacing:0.2px;}
 .ub-haute{background:var(--red-l);color:var(--red);}
 .ub-moyenne{background:var(--amber-l);color:#92400E;}
@@ -158,7 +148,6 @@ select:focus{outline:none;border-color:var(--accent);}
 .statut-badge{padding:3px 10px;border-radius:20px;font-size:10.5px;font-weight:600;}
 .statut-traite{background:var(--green-l);color:#065F46;}
 .statut-attente{background:var(--amber-l);color:#92400E;}
-
 .ua{background:var(--card);border-radius:var(--r);border:1px solid var(--border);border-left:4px solid var(--red);padding:1.25rem 1.5rem;margin-bottom:12px;box-shadow:var(--sh);transition:var(--tr);}
 .ua:hover{transform:translateX(3px);}
 .ua.moyenne{border-left-color:var(--amber);}
@@ -168,7 +157,6 @@ select:focus{outline:none;border-color:var(--accent);}
 .uar{font-size:13px;color:var(--text2);line-height:1.6;}
 .uaran{font-size:12px;color:var(--text3);margin-top:6px;font-style:italic;}
 .uaa{display:flex;gap:8px;margin-top:12px;}
-
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:1.75rem;}
 .stat-card{background:var(--card);border-radius:var(--r);padding:1.75rem 1.5rem;border:1px solid var(--border);text-align:center;box-shadow:var(--sh);transition:var(--tr);}
 .stat-card:hover{transform:translateY(-3px);box-shadow:var(--shm);}
@@ -186,7 +174,6 @@ canvas{max-width:180px;max-height:180px;}
 .top-rank{font-size:14px;font-weight:800;color:var(--accent);width:24px;font-family:'JetBrains Mono',monospace;}
 .top-name{flex:1;font-size:13px;font-weight:500;color:var(--text);}
 .top-count{font-size:12px;font-weight:600;color:var(--text2);}
-
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--card);border-radius:20px;padding:2rem;width:580px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,0.25);border:1px solid var(--border);animation:mi 0.2s cubic-bezier(0.4,0,0.2,1);}
@@ -199,7 +186,6 @@ canvas{max-width:180px;max-height:180px;}
 .form-textarea{width:100%;padding:10px 14px;border-radius:var(--rs);border:1px solid var(--border);font-size:13px;font-family:'Inter',sans-serif;color:var(--text);resize:vertical;min-height:160px;line-height:1.6;background:var(--bg);transition:var(--tr);}
 .form-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,110,247,0.12);}
 .modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:1.5rem;}
-
 .toast{position:fixed;bottom:2rem;right:2rem;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;z-index:2000;opacity:0;transition:all 0.3s ease;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,0.2);transform:translateY(10px);}
 .toast.show{opacity:1;transform:translateY(0);}
 .toast.success{background:var(--green);color:#fff;}
@@ -230,14 +216,12 @@ input:checked+.slider:before{transform:translateX(20px);}
 .lh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
 .lc{font-size:13px;color:var(--text2);font-weight:500;}
 .st{font-size:14px;font-weight:600;color:var(--text);}
-
 ::-webkit-scrollbar{width:10px;height:10px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;border:2px solid var(--bg);}
 ::-webkit-scrollbar-thumb:hover{background:var(--text3);}
 *{scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 html{scroll-behavior:smooth;}
-
 @media(max-width:768px){
   .sidebar{width:100%;height:auto;position:relative;flex-direction:row;flex-wrap:wrap;padding:0.5rem;}
   .sb-logo,.sb-bot{padding:0.5rem;border:none;}
@@ -292,7 +276,7 @@ html{scroll-behavior:smooth;}
       <div class="card"><div class="ctitle">📊 Emails par catégorie</div><div id="chart-cat"></div></div>
       <div class="card"><div class="ctitle">⚡ Emails par urgence</div><div id="chart-urg"></div></div>
     </div>
-    <div class="lh"><div class="st">Emails récents — triés par priorité</div><div class="lc" id="dash-count"></div></div>
+    <div class="lh"><div class="st">Emails récents — triés par date</div><div class="lc" id="dash-count"></div></div>
     <div class="outlook-layout">
       <div class="email-list-panel">
         <div class="elh"><span id="outlook-count">0 email(s)</span><span style="color:var(--accent);cursor:pointer;font-size:11px;font-weight:700;" onclick="trierParDate()">📅 Par date</span></div>
@@ -316,7 +300,7 @@ html{scroll-behavior:smooth;}
       <select onchange="filtrerEmails()" id="fe-cat"><option value="">Toutes catégories</option><option>recouvrement</option><option>RH</option><option>fournisseur</option><option>direction</option><option>banque</option><option>client</option><option>comptabilite</option><option>rejet</option></select>
       <select onchange="filtrerEmails()" id="fe-urg"><option value="">Toutes urgences</option><option>haute</option><option>moyenne</option><option>faible</option></select>
       <select onchange="filtrerEmails()" id="fe-statut"><option value="">Tous statuts</option><option value="0">Non traités</option><option value="1">Traités</option></select>
-      <select onchange="filtrerEmails()" id="fe-tri"><option value="priorite">Priorité</option><option value="date_desc">Date ↓</option><option value="date_asc">Date ↑</option><option value="expediteur">Expéditeur</option><option value="categorie">Catégorie</option></select>
+      <select onchange="filtrerEmails()" id="fe-tri"><option value="date_desc">Date ↓</option><option value="priorite">Priorité</option><option value="date_asc">Date ↑</option><option value="expediteur">Expéditeur</option><option value="categorie">Catégorie</option></select>
     </div>
     <div class="outlook-layout">
       <div class="email-list-panel"><div class="elh"><span id="emails-list-count">0 email(s)</span></div><div id="emails-list-panel"></div></div>
@@ -376,8 +360,6 @@ html{scroll-behavior:smooth;}
     </div>
   </div>
 
-
-  <!-- PAGE CONFIG -->
   <div class="page" id="page-config">
     <div class="topbar">
       <div><div class="ptitle">⚙️ Configuration</div><div class="psub">Paramètres de l'agent IA</div></div>
@@ -385,9 +367,7 @@ html{scroll-behavior:smooth;}
         <button class="btn btn-accent" onclick="sauvegarderConfig()">💾 Sauvegarder</button>
       </div>
     </div>
-
     <div class="cfg-grid">
-      <!-- Connexion IMAP -->
       <div class="cfg-card">
         <div class="cfg-title">📬 Connexion messagerie</div>
         <div class="cfg-row">
@@ -408,14 +388,12 @@ html{scroll-behavior:smooth;}
           <div><span class="status-ok">✅ Connecté</span></div>
         </div>
       </div>
-
-      <!-- Agent IA -->
       <div class="cfg-card">
         <div class="cfg-title">🤖 Agent IA — Groq</div>
         <div class="cfg-row">
           <div class="cfg-label">Modèle LLM</div>
           <select class="cfg-select" id="cfg-model">
-            <option selected>llama-3.3-70b-versatile</option>
+            <option selected>openai/gpt-oss-20b</option>
             <option>llama-3.1-8b-instant</option>
             <option>mixtral-8x7b-32768</option>
           </select>
@@ -444,9 +422,7 @@ html{scroll-behavior:smooth;}
         </div>
       </div>
     </div>
-
     <div class="cfg-grid">
-      <!-- Catégories -->
       <div class="cfg-card">
         <div class="cfg-title">📁 Catégories actives</div>
         <div class="cfg-toggle">
@@ -478,8 +454,6 @@ html{scroll-behavior:smooth;}
           <label class="switch"><input type="checkbox" checked onchange="majCategorie(this)"><span class="slider"></span></label>
         </div>
       </div>
-
-      <!-- Notifications -->
       <div class="cfg-card">
         <div class="cfg-title">🔔 Notifications & Alertes</div>
         <div class="cfg-toggle">
@@ -505,8 +479,6 @@ html{scroll-behavior:smooth;}
         </div>
       </div>
     </div>
-
-    <!-- Informations système -->
     <div class="cfg-card" style="margin-bottom:1.5rem;">
       <div class="cfg-title">ℹ️ Informations système</div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
@@ -524,11 +496,10 @@ html{scroll-behavior:smooth;}
         </div>
         <div style="text-align:center;padding:1rem;background:var(--bg);border-radius:10px;">
           <div style="font-size:22px;font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;">Groq</div>
-          <div style="font-size:11px;color:var(--text2);margin-top:4px;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">LLaMA 3.3 70B</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:4px;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">openai/gpt-oss-20b</div>
         </div>
       </div>
     </div>
-
   </div>
 
 </div>
@@ -548,7 +519,7 @@ html{scroll-behavior:smooth;}
 <div class="toast" id="toast"></div>
 
 <script>
-let allEmails=[],emailSelectionne=null,triActuel='priorite',volumeChartInstance=null;
+let allEmails=[],emailSelectionne=null,triActuel='date_desc',volumeChartInstance=null;
 const CC={recouvrement:'#EF4444',RH:'#4F6EF7',fournisseur:'#10B981',direction:'#8B5CF6',banque:'#F59E0B',client:'#EC4899',comptabilite:'#06B6D4',rejet:'#9CA3AF',autre:'#D1D5DB'};
 const UC={haute:'#EF4444',moyenne:'#F59E0B',faible:'#10B981'};
 const OU={haute:0,moyenne:1,faible:2},OC={recouvrement:0,direction:1,client:2,fournisseur:3,banque:4,RH:5,comptabilite:6,rejet:7,autre:8};
@@ -565,14 +536,14 @@ async function exporterPDF(){const btn=document.querySelector('[onclick="exporte
 
 function gsb(s){if(!s)return'<span class="source-badge source-ia">🤖 IA</span>';if(s.includes('Historique'))return'<span class="source-badge source-hist">📚 Hist.</span>';if(s==='Rejeté')return'<span class="source-badge source-rejet">🚫 Rejeté</span>';return'<span class="source-badge source-ia">🤖 IA</span>';}
 function fd(d){if(!d)return'—';const date=new Date(d),now=new Date(),diff=now-date;if(diff<86400000&&date.getDate()===now.getDate())return date.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});if(diff<7*86400000)return date.toLocaleDateString('fr-FR',{weekday:'short',hour:'2-digit',minute:'2-digit'});return date.toLocaleDateString('fr-FR',{day:'2-digit',month:'short'});}
-function trierEmails(emails,tri='priorite'){return[...emails].sort((a,b)=>{switch(tri){case'priorite':if(a.traite!==b.traite)return a.traite?1:-1;if((a.categorie==='rejet')!==(b.categorie==='rejet'))return a.categorie==='rejet'?1:-1;if(a.urgence!==b.urgence)return(OU[a.urgence]||2)-(OU[b.urgence]||2);return new Date(b.date_reception)-new Date(a.date_reception);case'date_desc':return new Date(b.date_reception)-new Date(a.date_reception);case'date_asc':return new Date(a.date_reception)-new Date(b.date_reception);case'expediteur':return(a.expediteur||'').localeCompare(b.expediteur||'');case'categorie':return(OC[a.categorie]||9)-(OC[b.categorie]||9);default:return 0;}});}
+function trierEmails(emails,tri='date_desc'){return[...emails].sort((a,b)=>{switch(tri){case'priorite':if(a.traite!==b.traite)return a.traite?1:-1;if((a.categorie==='rejet')!==(b.categorie==='rejet'))return a.categorie==='rejet'?1:-1;if(a.urgence!==b.urgence)return(OU[a.urgence]||2)-(OU[b.urgence]||2);return new Date(b.date_reception)-new Date(a.date_reception);case'date_desc':return new Date(b.date_reception)-new Date(a.date_reception);case'date_asc':return new Date(a.date_reception)-new Date(b.date_reception);case'expediteur':return(a.expediteur||'').localeCompare(b.expediteur||'');case'categorie':return(OC[a.categorie]||9)-(OC[b.categorie]||9);default:return 0;}});}
 function fp(emails,p){if(!p)return emails;const now=new Date();return emails.filter(e=>{const d=new Date(e.date_reception);if(p==='today')return d.toDateString()===now.toDateString();if(p==='week'){const s=new Date(now);s.setDate(now.getDate()-7);return d>=s;}if(p==='month'){const s=new Date(now);s.setMonth(now.getMonth()-1);return d>=s;}return true;});}
 
 function naviguer(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');const idx={dashboard:0,emails:1,urgences:2,stats:3,config:4};document.querySelectorAll('.nav-item')[idx[page]].classList.add('active');if(page==='urgences')afficherUrgences();if(page==='emails')filtrerEmails();if(page==='stats')afficherStats();if(page==='dashboard')aol(allEmails);}
 async function charger(){afficherToast('🔄 Actualisation...','success');fetch('/emails').then(r=>r.json()).then(d=>{if(!Array.isArray(d))throw 0;allEmails=d;maj();afficherToast('✅ Dashboard actualise !','success');}).catch(()=>{document.getElementById('outlook-list').innerHTML='<div class="empty">⚠️ API non disponible</div>';afficherToast('❌ Erreur','error');});}
 async function analyser(){const btn=document.querySelector('[onclick="analyser()"]');btn.textContent='⏳ Analyse...';btn.disabled=true;try{await fetch('/analyser',{method:'POST'});setTimeout(charger,3000);}catch{}setTimeout(()=>{btn.textContent='🔄 Analyser';btn.disabled=false;},3000);}
 
-function maj(){const h=allEmails.filter(e=>e.urgence==='haute'&&!e.traite).length;document.getElementById('m-total').textContent=allEmails.length;document.getElementById('m-haute').textContent=allEmails.filter(e=>e.urgence==='haute').length;document.getElementById('m-moyenne').textContent=allEmails.filter(e=>e.urgence==='moyenne').length;document.getElementById('m-nt').textContent=allEmails.filter(e=>!e.traite).length;const b=document.getElementById('badge-urgences');if(h>0){b.textContent=h;b.style.display='inline';}else b.style.display='none';const bn=document.getElementById('badge-urgences-nav');if(h>0){bn.textContent=h;bn.style.display='inline';}else bn.style.display='none';dessCharts();aol(allEmails);}
+function maj(){const h=allEmails.filter(e=>(e.urgence==='haute'||e.urgence==='moyenne')&&!e.traite).length;document.getElementById('m-total').textContent=allEmails.length;document.getElementById('m-haute').textContent=allEmails.filter(e=>e.urgence==='haute').length;document.getElementById('m-moyenne').textContent=allEmails.filter(e=>e.urgence==='moyenne').length;document.getElementById('m-nt').textContent=allEmails.filter(e=>!e.traite).length;const b=document.getElementById('badge-urgences');if(h>0){b.textContent=h;b.style.display='inline';}else b.style.display='none';const bn=document.getElementById('badge-urgences-nav');if(h>0){bn.textContent=h;bn.style.display='inline';}else bn.style.display='none';dessCharts();aol(allEmails);}
 
 function dessCharts(){const cats={},urgs={haute:0,moyenne:0,faible:0};allEmails.forEach(e=>{cats[e.categorie]=(cats[e.categorie]||0)+1;if(urgs[e.urgence]!==undefined)urgs[e.urgence]++;});const mC=Math.max(...Object.values(cats),1),mU=Math.max(...Object.values(urgs),1);document.getElementById('chart-cat').innerHTML=Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<div class="bar-row"><div class="bar-lbl">${c}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/mC*100)}%;background:${CC[c]||'#888'}"></div></div><div class="bar-num">${n}</div></div>`).join('');document.getElementById('chart-urg').innerHTML=Object.entries(urgs).map(([u,n])=>`<div class="bar-row"><div class="bar-lbl">${u}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/mU*100)}%;background:${UC[u]}"></div></div><div class="bar-num">${n}</div></div>`).join('');}
 
@@ -617,8 +588,6 @@ function majCategorie(el){const label=el.closest('.cfg-toggle').querySelector('.
 
 let tempsChartInstance=null;
 function dessinerTemps(){
-  // Regroupe le temps de traitement moyen (reception -> date_traitement) par jour.
-  // Necessite que /emails renvoie bien "date_traitement" (ajoute cote backend).
   const parJour={};
   allEmails.forEach(e=>{
     if(e.date_reception&&e.date_traitement){
@@ -639,10 +608,7 @@ function dessinerTemps(){
   const lc=dk?"#6B7280":"#9CA3AF";
   const ctx=document.getElementById("tempsChart").getContext("2d");
   if(tempsChartInstance)tempsChartInstance.destroy();
-  if(!jours.length){
-    document.getElementById("tempsChart").parentElement.insertAdjacentHTML('beforeend','');
-    return;
-  }
+  if(!jours.length){return;}
   tempsChartInstance=new Chart(ctx,{type:"bar",data:{labels:jours.map(j=>j.substring(5)),datasets:[{label:"Heures",data:moyennes,backgroundColor:"#8B5CF6",borderRadius:6,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+" h en moyenne"}}},scales:{y:{beginAtZero:true,ticks:{color:lc},grid:{color:gc}},x:{ticks:{color:lc,font:{size:10}},grid:{display:false}}}}});
 }
 
@@ -656,7 +622,6 @@ async function chargerHistoriqueEnvois(){
   }catch{cible.innerHTML='<div style="color:var(--text3);font-size:13px;padding:1rem 0;">⚠️ Impossible de charger l\'historique</div>';}
 }
 
-// --- Ripple effect sur tous les boutons ---
 function creerRipple(e){
   const btn=e.currentTarget;
   const rect=btn.getBoundingClientRect();

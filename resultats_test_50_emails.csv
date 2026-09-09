@@ -1,0 +1,51 @@
+﻿sujet,categorie_attendue,categorie_obtenue,categorie_correcte,urgence_attendue,urgence_obtenue,urgence_correcte
+Devis serrures TG-55,fournisseur,client,False,faible,faible,True
+Rupture de stock urgente,fournisseur,fournisseur,True,moyenne,haute,False
+Confirmation de commande N°4521,fournisseur,fournisseur,True,faible,faible,True
+Hausse tarifaire matières premières,fournisseur,fournisseur,True,moyenne,faible,False
+Problème qualité livraison N°3390,fournisseur,fournisseur,True,haute,haute,True
+Facture en pièce jointe,fournisseur,ERREUR,False,faible,ERREUR,False
+Renouvellement contrat cadre,fournisseur,ERREUR,False,moyenne,ERREUR,False
+Réclamation produit défectueux,client,ERREUR,False,haute,ERREUR,False
+Demande de catalogue produits,client,ERREUR,False,faible,ERREUR,False
+Retard de livraison signalé,client,ERREUR,False,moyenne,ERREUR,False
+Demande de remise quantité,client,ERREUR,False,faible,ERREUR,False
+Litige facturation,client,ERREUR,False,moyenne,ERREUR,False
+Remerciements et fidélité,client,ERREUR,False,faible,ERREUR,False
+Urgence chantier bloqué,client,ERREUR,False,haute,ERREUR,False
+Demande de congé,RH,ERREUR,False,faible,ERREUR,False
+Convocation entretien annuel,RH,ERREUR,False,moyenne,ERREUR,False
+Arrêt maladie,RH,ERREUR,False,moyenne,ERREUR,False
+Candidature spontanée,RH,ERREUR,False,faible,ERREUR,False
+Question sur bulletin de paie,RH,ERREUR,False,faible,ERREUR,False
+Accident de travail à déclarer,RH,ERREUR,False,haute,ERREUR,False
+Relevé de compte mensuel,banque,ERREUR,False,faible,ERREUR,False
+Échéance de crédit à venir,banque,ERREUR,False,moyenne,ERREUR,False
+Rejet de virement,banque,ERREUR,False,haute,ERREUR,False
+Proposition de placement,banque,ERREUR,False,faible,ERREUR,False
+Mise à jour dossier KYC,banque,ERREUR,False,moyenne,ERREUR,False
+Alerte solde bas,banque,ERREUR,False,moyenne,ERREUR,False
+Réunion stratégique lundi,direction,ERREUR,False,moyenne,ERREUR,False
+Validation budget projet,direction,ERREUR,False,haute,ERREUR,False
+Note d'information générale,direction,ERREUR,False,faible,ERREUR,False
+Demande de reporting mensuel,direction,ERREUR,False,moyenne,ERREUR,False
+Visite client important prévue,direction,ERREUR,False,moyenne,ERREUR,False
+Décision arrêt ligne de production,direction,ERREUR,False,haute,ERREUR,False
+Facture à valider,comptabilite,ERREUR,False,moyenne,ERREUR,False
+Rapprochement bancaire mensuel,comptabilite,ERREUR,False,faible,ERREUR,False
+Retard de paiement fournisseur signalé,comptabilite,ERREUR,False,haute,ERREUR,False
+Clôture comptable annuelle,comptabilite,ERREUR,False,haute,ERREUR,False
+Note de frais à traiter,comptabilite,ERREUR,False,faible,ERREUR,False
+Question TVA,comptabilite,ERREUR,False,faible,ERREUR,False
+Relance client impayé,recouvrement,ERREUR,False,haute,ERREUR,False
+Échéancier de paiement proposé,recouvrement,ERREUR,False,moyenne,ERREUR,False
+Mise en demeure à envoyer,recouvrement,ERREUR,False,haute,ERREUR,False
+Suivi factures en attente,recouvrement,ERREUR,False,faible,ERREUR,False
+Client règle sa dette,recouvrement,ERREUR,False,faible,ERREUR,False
+Risque client à surveiller,recouvrement,ERREUR,False,moyenne,ERREUR,False
+Vous avez gagné un iPhone !,rejet,ERREUR,False,faible,ERREUR,False
+Newsletter hebdomadaire,rejet,ERREUR,False,faible,ERREUR,False
+Notification système automatique,rejet,ERREUR,False,faible,ERREUR,False
+Offre publicitaire agressive,rejet,ERREUR,False,faible,ERREUR,False
+Test envoyé par erreur,rejet,ERREUR,False,faible,ERREUR,False
+Message vide,rejet,ERREUR,False,faible,ERREUR,False
