@@ -1,81 +1,68 @@
-# 📧 Agent IA — Gestion des Emails
+# Agent IA — Gestion intelligente des emails
 
-## 📌 Description
-Agent intelligent connecté à Outlook qui aide un responsable à gérer sa boîte mail automatiquement grâce à l'intelligence artificielle.
+Agent IA connecté à la messagerie Outlook/IMAP de Famasser (marque CLEDOR), qui classe automatiquement les emails reçus, détecte leur niveau d'urgence, génère un résumé et propose une réponse — sans jamais envoyer automatiquement quoi que ce soit.
 
-## 🎯 Fonctionnalités
-- 📖 Lecture automatique des emails entrants
-- 📝 Résumé rapide de chaque email
-- 📁 Classification en 7 catégories : banque, client, fournisseur, RH, direction, recouvrement, comptabilité
-- 🚨 Détection des urgences (haute / moyenne / faible)
-- 💡 Détection des actions : relance, paiement, document, information
-- ✉️ Proposition de brouillons de réponse (sans envoi automatique)
-- 📊 Dashboard interactif avec graphiques
+Projet réalisé dans le cadre d'un stage élève-ingénieur EIGSI Casablanca (spécialité AIBD), sujet principal.
 
-## 🛠️ Technologies utilisées
-| Technologie | Rôle |
+## Fonctionnalités
+
+- **Classification automatique** en 7 catégories métier (recouvrement, RH, fournisseur, direction, banque, client, comptabilité) + détection du spam/rejet
+- **Détection d'urgence** (haute / moyenne / faible) avec raison explicite, y compris détection de signaux d'urgence implicites (pas seulement des critères chiffrés)
+- **Résumé enrichi** (format court, avec expéditeur) et **proposition de réponse** (2 phrases courtes), jamais envoyée automatiquement
+- **Économie de tokens** : réutilisation des réponses historiques similaires (similarité de Jaccard)
+- **Dashboard web** (5 pages) : Dashboard, Emails, Urgences, Statistiques, Configuration
+- **Notifications multicanal** : email HTML automatique + bot Telegram interactif (`@FamasserAgentBot`, commandes `/urgences`, `/stats`, `/aide`)
+- **Mode automatique** : vérification en boucle toutes les 5 minutes (`python agent.py --auto`)
+
+## Stack technique
+
+- Python + Flask
+- PostgreSQL
+- API Groq (modèle `openai/gpt-oss-20b`)
+- IMAP/SMTP OVH (SSL)
+- HTML/CSS/JavaScript (dashboard, Chart.js, jsPDF)
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+Copier `.env.example` en `.env` et remplir les identifiants (IMAP, Groq, Telegram, base de données).
+
+## Lancement
+
+```bash
+# Traitement ponctuel (vérifie une fois, puis s'arrête)
+python api.py          # dashboard web, http://127.0.0.1:5000
+python agent.py         # traite les emails non lus une fois
+
+# Mode automatique (vérifie en boucle toutes les 5 min)
+python agent.py --auto
+```
+
+## Résultats de test
+
+Un script de test (`tests_50_emails.py`) évalue la précision de l'agent sur 50 emails représentatifs, annotés manuellement (catégorie et urgence attendues) :
+
+| Métrique | Résultat |
 |---|---|
-| Python 3.14 | Langage principal |
-| Groq LLaMA 3.3 70B | Analyse IA des emails |
-| PostgreSQL | Base de données |
-| Streamlit | Dashboard interactif |
-| Microsoft Graph API | Connexion Outlook |
+| Précision classification | 82.0% (41/50) |
+| Précision détection urgence | 77.6% (38/49) |
 
-## 📁 Structure du projet
-agent-email/
-├── agent.py              # Pipeline principal
-├── ai_processor.py       # Analyse IA avec Groq
-├── outlook_connector.py  # Connexion Outlook
-├── database.py           # Gestion PostgreSQL
-├── dashboard.py          # Interface Streamlit
-├── .env                  # Variables d'environnement
-└── README.md             # Documentation
+Ces résultats s'appuient sur une seconde itération du prompt de détection d'urgence, après une première version limitée à des critères chiffrés stricts (57.1% de précision initiale).
 
-## ⚙️ Installation
+```bash
+python tests_50_emails.py
+```
 
-### 1. Cloner le projet
-git clone https://github.com/feat-bouchoar27-tech/agent-email.git
-cd agent-email
+Génère un résumé dans le terminal et un export détaillé (`resultats_test_50_emails.csv`).
 
-### 2. Installer les dépendances
-pip install groq psycopg2 streamlit python-dotenv msal requests pandas
+## Sécurité
 
-### 3. Configurer le fichier .env
-GROQ_API_KEY=votre_clé_groq
-DATABASE_URL=postgresql://postgres:motdepasse@localhost:5432/agent_email
-USER_EMAIL=votre_email@outlook.com
+Les identifiants (clé API Groq, mot de passe IMAP, token Telegram) sont stockés exclusivement dans `.env`, exclu du dépôt Git (`.gitignore`). Ne jamais committer ce fichier.
 
-### 4. Initialiser la base de données
-python database.py
+## Auteure
 
-### 5. Lancer l'agent
-python agent.py
-
-### 6. Lancer le dashboard
-streamlit run dashboard.py
-
-## 🔄 Pipeline de traitement
-Boîte Outlook
-     ↓
-agent.py lit les emails non lus
-     ↓
-ai_processor.py analyse avec Groq LLM
-     ↓
-Résumé + Catégorie + Urgence + Réponse proposée
-     ↓
-database.py sauvegarde dans PostgreSQL
-     ↓
-dashboard.py affiche les résultats
-
-## 📊 Exemple de résultat
-| Email | Catégorie | Urgence | Action |
-|---|---|---|---|
-| Facture 15000 EUR impayée | recouvrement | haute | relance |
-| Demande de congé | RH | moyenne | document |
-| Devis fournisseur | fournisseur | moyenne | information |
-| Relevé bancaire | banque | faible | information |
-
-## 👩‍💻 Auteur
-Fatima Ezzahra Aït Bouchoar
-Étudiante ingénieure 4A — Dominante AIBD
-Stage entreprise — 2026
+AIT BOUCHOAR Fatima Ezzahra — EIGSI Casablanca, 4ème année AIBD
+Stage élève-ingénieur — Famasser (CLEDOR), 2026
